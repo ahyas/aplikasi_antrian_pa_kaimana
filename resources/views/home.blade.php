@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+
+                    <h1>Selamat datang di aplikasi antrian</h1>
                 </div>
             </div>
         </div>
