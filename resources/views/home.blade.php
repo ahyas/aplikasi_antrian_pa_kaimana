@@ -17,6 +17,7 @@
                     You are logged in!
 
                     <h1>Selamat datang di aplikasi antrian</h1>
+                    <h2>Silahkan ambil nomor antrian anda</h2>
                 </div>
             </div>
         </div>
