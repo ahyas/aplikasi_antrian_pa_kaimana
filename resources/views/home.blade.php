@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -14,10 +14,20 @@
                         </div>
                     @endif
 
-                    You are logged in!
-
-                    <h1>Selamat datang di aplikasi antrian</h1>
-                    <h2>Silahkan ambil nomor antrian anda</h2>
+                    <p>Selamat datang di dashboard aplikasi Antrian! Silahkan pilih menu di bawah ini.</p>
+                    <div class="container">
+                <div class="row" style="text-align:center">
+                    <div class="col">
+                        <a href="{{route('antrian.index')}}">Input daftar antrian sidang hari ini</a>
+                    </div>
+                    <div class="col">
+                        
+                    </div>
+                    <div class="col">
+                    
+                    </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

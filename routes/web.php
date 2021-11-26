@@ -21,8 +21,5 @@ Route::get("home","HomeController@index")->name("home.index");
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('antrian/input', 'ControllerAntrian@index')->name('antrian.index');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
