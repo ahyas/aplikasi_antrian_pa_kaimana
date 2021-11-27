@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("home","HomeController@index")->name("home.index");
-
 Auth::routes();
-
-Route::get('antrian/input', 'ControllerAntrian@index')->name('antrian.index');
-
+Route::get("home","HomeController@index")->name("home.index");
+Route::get('antrian', 'ControllerDaftarAntrian@index')->name('antrian.index');
+Route::get('antrian/get_data_perkara','ControllerDaftarAntrian@getDaftarPerkara')->name('antrian.get_data_perkara');
+Route::get('antrian/get_data_antrian','ControllerDaftarAntrian@getDaftarAntrian')->name('antrian.get_data_antrian');
+Route::get('antrian/input','ControllerDaftarAntrian@input')->name('antrian.input');
+Route::get('antrian/delete','ControllerDaftarAntrian@delete')->name('antrian.delete');
