@@ -16,18 +16,30 @@
 
                     <p>Selamat datang di dashboard aplikasi Antrian! Silahkan pilih menu di bawah ini.</p>
                     <div class="container">
-                <div class="row" style="text-align:center">
-                    <div class="col">
-                        <a href="{{route('antrian.index')}}">Input daftar antrian sidang hari ini</a>
+                        <div class="row" style="text-align:center">
+                        @if(Auth::user()->id_role==1)
+                            <div class="col">
+                                <a href="{{route('antrian.index')}}">Manage daftar antrian sidang hari ini</a>
+                            </div>
+                            <div class="col">
+                                <a href="">Manage running text</a>
+                            </div>
+                            <div class="col">
+                                <a href="">Menu 3</a>
+                            </div>
+                        @elseif(Auth::user()->id_role==2)
+                            <div class="col">
+                                <a href="{{route('antrian.index')}}">Pemanggilan antrian sidang</a>
+                            </div>
+                            <div class="col">
+                                <a href="">Menu 2</a>
+                            </div>
+                            <div class="col">
+                                <a href="">Menu 3</a>
+                            </div>
+                        @endif
+                        </div>
                     </div>
-                    <div class="col">
-                        
-                    </div>
-                    <div class="col">
-                    
-                    </div>
-                </div>
-                </div>
                 </div>
             </div>
         </div>
