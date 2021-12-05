@@ -27,7 +27,11 @@ class ControllerPushMessage extends Controller
             "updated_at"=>$date
         ]);
 
-        return response()->json($table);
+        $no_antrian=DB::table("tb_antrian")
+        ->where("no_perkara",$no_perkara)
+        ->select("no_antrian")->first();
+
+        return response()->json(["table"=>$table,"no_antrian"=>$no_antrian]);
     }
 
     public function client(){

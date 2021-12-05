@@ -90,7 +90,9 @@
 
 @endsection
 
+<audio id="tingtung" src="public/audio/tingtung.mp3"></audio>
 @push('scripts')
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>
 <script type="text/JavaScript">
     $(document).ready(function(){
         //Start Daftar perkara
@@ -188,6 +190,37 @@
             });
         });
 
+        //Start memanggil antrian lewat SSE (Server Sent Event)
+        $("body").on("click",".panggil",function(){
+            let no_perkara = $(this).data("no_perkara");
+            console.log("Call "+no_perkara);
+            $.ajax({
+                url:"{{route('push.get_antrian')}}",
+                type:"GET",
+                data:{no_perkara:no_perkara},
+                success:function(data){
+                    console.log(data.no_antrian.no_antrian);
+                    var bell = document.getElementById('tingtung');
+                    // mainkan suara bell antrian
+                    bell.pause();
+                    bell.currentTime = 0;
+                    bell.play();
+
+                    // set delay antara suara bell dengan suara nomor antrian
+                    durasi_bell = bell.duration * 770;
+
+                    // mainkan suara nomor antrian
+                    setTimeout(function() {
+                        responsiveVoice.speak("Nomor Antrian, " + data.no_antrian.no_antrian + ", menuju, ruang sidang, utama", "Indonesian Female", {
+                            rate: 0.9,
+                            pitch: 1,
+                            volume: 1
+                        });
+                    }, durasi_bell);
+                }
+            });
+        });
+        //End memanggil antrian lewat SSE
     });
 </script>
 @endpush
