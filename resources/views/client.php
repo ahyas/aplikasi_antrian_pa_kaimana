@@ -2,16 +2,14 @@
 <body>
 
 <h1>Getting server updates</h1>
-<div id="result"></div>
+<div id="antrian_saat_ini"></div>
 
 <script type="text/JavaScript">
 if(typeof(EventSource) !== "undefined"){
     var source = new EventSource("server");
     source.onmessage = function(event) {
-      document.getElementById("result").innerHTML = event.data + "<br>";
+      document.getElementById("antrian_saat_ini").innerHTML = event.data + "<br>";
     };
-}else{
-      document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events.";
 }
 </script>
 </body>

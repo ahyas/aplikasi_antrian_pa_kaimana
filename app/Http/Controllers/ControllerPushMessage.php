@@ -24,6 +24,7 @@ class ControllerPushMessage extends Controller
         $table=DB::table("tb_antrian")
         ->where("no_perkara",$request["no_perkara"])
         ->update([
+            "called"=>1,
             "updated_at"=>$date
         ]);
 

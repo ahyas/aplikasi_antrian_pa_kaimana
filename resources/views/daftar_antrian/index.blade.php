@@ -8,6 +8,7 @@
     }
 
 </style>
+<?php date_default_timezone_set("Asia/Jayapura"); ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -92,7 +93,9 @@
 
 <audio id="tingtung" src="public/audio/tingtung.mp3"></audio>
 @push('scripts')
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>
+<!--Link cadangan kalau link local tidak berfungsi-->
+<!--<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>-->
+<script src="public/js/responsivevoice.js"></script>
 <script type="text/JavaScript">
     $(document).ready(function(){
         //Start Daftar perkara
@@ -137,7 +140,7 @@
         //End Daftar perkara yang akan disidangkan pada hari ini
         
         //Start pemanggilan para pihak
-        $(".pemanggilan_antrian").DataTable({
+        var tabel = $(".pemanggilan_antrian").DataTable({
             ajax:"{{route('antrian.get_data_antrian')}}",
             serverside:false,
             processing:false,
@@ -157,9 +160,12 @@
         });
         //End pemanggilan para pihak
 
+        setInterval( function () {
+            tabel.ajax.reload(null, false);
+        }, 8000 );
+
         $("body").on("click",".btnInput",function(){
             $("#formDaftarPerkara").modal("show");
-            $(".daftar_perkara").DataTable().ajax.reload();
         });
 
         $("body").on("click",".pilih",function(){
@@ -170,6 +176,7 @@
                 type:"GET",
                 data:{no_perkara:no_perkara},
                 success:function(data){
+                    $(".daftar_perkara").DataTable().ajax.reload();
                     $(".daftar_antrian").DataTable().ajax.reload();
                     $("#formDaftarPerkara").modal("hide");
                 }
@@ -205,10 +212,8 @@
                     bell.pause();
                     bell.currentTime = 0;
                     bell.play();
-
                     // set delay antara suara bell dengan suara nomor antrian
                     durasi_bell = bell.duration * 770;
-
                     // mainkan suara nomor antrian
                     setTimeout(function() {
                         responsiveVoice.speak("Nomor Antrian, " + data.no_antrian.no_antrian + ", menuju, ruang sidang, utama", "Indonesian Female", {
