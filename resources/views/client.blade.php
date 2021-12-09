@@ -15,20 +15,21 @@
 </style>
 <body onload="startTime()">
 <div class="container-fluid vh-100" style="background-color:#1aeb39">
-    <div class="row" style="height:15%">  
-      <div class="col-sm-9"  style="background-color:orange;"><h1 style="font-weight:bold; padding-top:20px">MAHKAMAH AGUNG REPUBLIK INDONESIA</h1><h2 style="font-weight:bold;">PENGADILAN AGAMA KAIMANA</h2></div>
-      <div class="col-sm-3" style="background-color:orange;"><div id="clock" style="font-size:50px; font-weight:bold; line-height:50px; padding-top:20px"></div><br><div id="date" style="font-size:25px; line-height:0;"><i>{{date('l, F jS, Y')}}</i></div></div>
+    <div class="row" style="height:10%">  
+      <div class="col-sm-9"  style="background-color:orange;"><h3 style="font-weight:bold; padding-top:10px">MAHKAMAH AGUNG REPUBLIK INDONESIA</h3><h4 style="font-weight:bold;">PENGADILAN AGAMA KAIMANA</h4></div>
+      <div class="col-sm-3" style="background-color:orange;"><div id="clock" style="font-size:50px; font-weight:bold; line-height:25px; padding-top:20px;"></div><br><div id="date" style="font-size:20px; line-height:0;"><b><i>{{date('l, F jS, Y')}}</i></b></div></div>
+    </div>
+    
+    <div class="row" style="height:70%">  
+      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; text-align:center;"><div style="font-size: 50px; background-color:#21db53; border-radius: 25px; margin-top:25px">RUANG SIDANG UTAMA</div><div style="font-size: 40px; padding-top:0px;">NOMOR ANTRIAN</div>
+      <div style="font-size:250px; font-weight:bold; color:red; background-color:white; border-radius: 25px;" id="antrian_saat_ini"></div></div>
+      <div class="col-sm-8" style="background-color:yellow; padding-top:20px; padding-left:30px">
+        <video width="90%;" height="auto" style="border-radius: 20px;" autoplay muted>
+          <source src="public/video/kaimana.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
     <div class="row" style="height:10%">  
-      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; font-size:35px; text-align:center; line-height:80px">Ruang sidang utama</div>
-      <div class="col-sm-8" style="background-color:black;"></div>
-    </div>
-    <div class="row" style="height:50%">  
-      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; text-align:center; font-size: 20px">Nomor antrian<br>
-      <div class="row justify-content-center align-self-center" style="font-size:200px; font-weight:bold; color:red;" id="antrian_saat_ini"></div></div>
-      <div class="col-sm-8" style="background-color:black;"></div>
-    </div>
-    <div class="row" style="height:15%">  
       <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Jumlah antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="total_antrian"></div></div>
       <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Antrian selanjutnya</b><br><div style="font-size:50px; font-weight:bold; text-align:center" id="antrian_selanjutnya"></div></div>
       <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Sisa antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="sisa_antrian"></div></div>
@@ -78,7 +79,7 @@ if(typeof(EventSource) !== "undefined"){
         let s = today.getSeconds();
         m = checkTime(m);
         s = checkTime(s);
-        document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s;
+        document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s + " WIT";
         setTimeout(startTime, 1000);
     }
 
