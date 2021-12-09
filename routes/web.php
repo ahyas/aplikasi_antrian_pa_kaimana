@@ -14,17 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('client');
 });
 
 Auth::routes();
 Route::get("home","HomeController@index")->name("home.index");
-//Start SSE
-Route::get('client','ControllerPushMessage@client');
+
+//Start SSE Scripts
 Route::get('server','ControllerPushMessage@server')->name('push.server');
 Route::get('call','ControllerPushMessage@call');
 Route::get('get_antrian','ControllerPushMessage@get_antrian')->name('push.get_antrian');
-//End SSE
+//End SSE Scripts
+
+//Start test SSE
+Route::get("test/client","ControllerPushTest@client");
+Route::get("test/server","ControllerPushTest@server");
+//End test SSE
+
 Route::group(['middleware' => 'auth'], function () {
     //Start manage antrian sidang 
     Route::get('antrian', 'ControllerDaftarAntrian@index')->name('antrian.index');

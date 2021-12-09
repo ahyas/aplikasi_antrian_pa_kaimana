@@ -19,9 +19,18 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
-    use AuthenticatesUsers;
-
+    //--Start mengarahkan ke halaman login setelah user melakukan logout
+    use AuthenticatesUsers{
+        logout as performLogout;
+    }
+    
+    public function logout(Request $request)
+    {
+        $this->performLogout($request);
+        return redirect()->to('/login');
+    }
+    //--End  mengarahkan ke halaman login setelah user melakukan logout
+    
     /**
      * Where to redirect users after login.
      *

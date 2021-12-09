@@ -30,7 +30,7 @@ class ControllerDaftarAntrian extends Controller
         date_default_timezone_set("Asia/Jayapura");
         $date_today=date("Y-m-d");
         $table=DB::table("sipp.dataumumweb")
-        ->select("sipp.dataumumweb.IDPerkara as id","sipp.dataumumweb.noPerkara as no_perkara","sipp.jenisperkaraweb.nama as jenis_perkara", "sipp.dataumumweb.statusAkhir as status_akhir","sipp.dataumumweb.tglPutusan as tgl_putusan","sipp.perkara.pihak1_text","sipp.perkara.pihak2_text","u4441694_db_antri.tb_antrian.no_antrian")
+        ->select("sipp.dataumumweb.IDPerkara as id","sipp.dataumumweb.noPerkara as no_perkara","sipp.jenisperkaraweb.nama as jenis_perkara", "sipp.dataumumweb.statusAkhir as status_akhir","sipp.dataumumweb.tglPutusan as tgl_putusan","sipp.perkara.pihak1_text","sipp.perkara.pihak2_text","u4441694_db_antri.tb_antrian.no_antrian","u4441694_db_antri.tb_antrian.called")
         ->where("sipp.dataumumweb.IDProses","=","296")
         ->whereDate("u4441694_db_antri.tb_antrian.updated_at",$date_today)
         ->join("sipp.jenisperkaraweb", "sipp.dataumumweb.IDJenisPerkara","=","sipp.jenisperkaraweb.id")

@@ -76,6 +76,7 @@
                             <td>Pihak 1</td>
                             <td>Pihak 2</td>
                             <td width="70px">Jenis</td>
+                            <td width="70px">Status</td>
                             <td>Action</th>
                         </tr>
                         </thead>
@@ -150,8 +151,17 @@
                 {data:"pihak2_text"},
                 {data:"pihak1_text"},
                 {data:"jenis_perkara"},
+                {data:"called",
+                    mRender: function(data){
+                        if(data==0){
+                            return'<span class="badge badge-primary">Primary</span>';
+                        }else{
+                            return'<span class="badge badge-danger">Danger</span>';
+                        }
+                    }
+                },
                 {data:"no_perkara",
-                    mRender: function ( data ) 
+                    mRender: function ( data) 
                     {
                         return '<a href="javascript:void(0)" class="btn btn-success btn-sm panggil" data-no_perkara="'+data+'" >Panggil</a>';
                     }
@@ -162,7 +172,7 @@
 
         setInterval( function () {
             tabel.ajax.reload(null, false);
-        }, 8000 );
+        }, 5000 );
 
         $("body").on("click",".btnInput",function(){
             $("#formDaftarPerkara").modal("show");
@@ -219,7 +229,7 @@
                         responsiveVoice.speak("Nomor Antrian, " + data.no_antrian.no_antrian + ", menuju, ruang sidang, utama", "Indonesian Female", {
                             rate: 0.9,
                             pitch: 1,
-                            volume: 1
+                            volume: 10
                         });
                     }, durasi_bell);
                 }
