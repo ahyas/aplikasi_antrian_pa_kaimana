@@ -30,7 +30,7 @@ if ($query1->num_rows > 0) {
         $antrian_saat_ini = $row1["no_antrian"];
     }
   }else{
-        $antrian_saat_ini="0";
+        $antrian_saat_ini=0;
   }
   
 $row2 = mysqli_fetch_array($query2);
@@ -41,7 +41,7 @@ $sisa_antrian = $row3[0];
 if($sisa_antrian>0){
   $left_antrian=$sisa_antrian;
 }else{
-  $left_antrian="<div style='color:red'>Habis</div>";
+  $left_antrian=0;
 }
 
 $row4 = mysqli_fetch_array($query4);
@@ -50,7 +50,7 @@ $antrian_selanjutnya = $row4[0];
 if($antrian_selanjutnya<=$jml_antrian){
   $next=$antrian_selanjutnya;
 }else{
-  $next="<div style='color:red'>Habis</div>";
+  $next=0;
 }
 
 //echo"data: Total antrian: {$jml_antrian}<br> Antrian selanjutnya: {$next}<br>Sisa antrian: {$sisa_antrian}\n\n";

@@ -21,21 +21,21 @@
     </div>
     
     <div class="row" style="height:70%">  
-      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; text-align:center;"><div style="font-size: 50px; background-color:#21db53; border-radius: 25px; margin-top:25px">RUANG SIDANG UTAMA</div><div style="font-size: 40px; padding-top:0px;">NOMOR ANTRIAN</div>
+      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; text-align:center;"><div style="font-size: 40px; background-color:#21db53; border-radius: 25px; margin-top:25px">RUANG SIDANG UTAMA</div><div style="font-size: 40px; padding-top:0px;">NOMOR ANTRIAN</div>
       <div style="font-size:250px; font-weight:bold; color:red; background-color:white; border-radius: 25px;" id="antrian_saat_ini"></div></div>
       <div class="col-sm-8" style="background-color:yellow; padding-top:20px; padding-left:30px">
-        <video width="90%;" height="auto" style="border-radius: 20px;" autoplay muted>
+        <video width="90%;" height="auto" style="border-radius: 20px;" autoplay loop muted>
           <source src="public/video/kaimana.mp4" type="video/mp4" />
         </video>
       </div>
     </div>
     <div class="row" style="height:10%">  
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Jumlah antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="total_antrian"></div></div>
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Antrian selanjutnya</b><br><div style="font-size:50px; font-weight:bold; text-align:center" id="antrian_selanjutnya"></div></div>
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px"><b>Sisa antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="sisa_antrian"></div></div>
+      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Jumlah antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="total_antrian"></div></div>
+      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Antrian selanjutnya</b><br><div style="font-size:50px; font-weight:bold; text-align:center" id="antrian_selanjutnya"></div></div>
+      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Sisa antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="sisa_antrian"></div></div>
     </div>
     <div class="row" style="height:10%">
-      <div class="footer"><div class="col-sm-12" style="font-size:30px; background-color:cyan;"><marquee direction="left" style="font-size:30px"><i>SELAMAT DATANG DI KANTOR PENGADILAN AGAMA KAIMANA - SENYUM, SALAM, SAPA, SOPAN, SANTUN</i></marquee></div></div>
+      <div class="footer"><div class="col-sm-12" style="font-size:30px; background-color:cyan;"><marquee direction="left" style="font-size:25px"><b><i>SELAMAT DATANG DI KANTOR PENGADILAN AGAMA KAIMANA - SENYUM, SALAM, SAPA, SOPAN, SANTUN</i></b></marquee></div></div>
     </div>
 </div>
 </body>
@@ -46,29 +46,46 @@
 if(typeof(EventSource) !== "undefined"){
 
     var source = new EventSource("server");
+    
+    function pad(num, size) {
+        while (num.length < size) num = "0" + num;
+        return num;
+    }
 
     source.addEventListener("antrian_saat_ini", function (event) {
         var data = event.data;
         // handle message
-        document.getElementById("antrian_saat_ini").innerHTML = data;
+        var number = pad(data, 3);
+        document.getElementById("antrian_saat_ini").innerHTML = number;
     });
 
     source.addEventListener("total_antrian", function (event) {
         var data = event.data;
         // handle message
-        document.getElementById("total_antrian").innerHTML = data;
+        var number = pad(data, 3);
+        document.getElementById("total_antrian").innerHTML = number;
     });
 
     source.addEventListener("antrian_selanjutnya", function (event) {
         var data = event.data;
-        // handle message
-        document.getElementById("antrian_selanjutnya").innerHTML = data;
+        if(data==0){
+          var number = "<div style='color:red'>Habis</div>";
+        }else{
+          var number = pad(data, 3);
+        }
+
+        document.getElementById("antrian_selanjutnya").innerHTML = number;
     });
 
     source.addEventListener("sisa_antrian", function (event) {
         var data = event.data;
-        // handle message
-        document.getElementById("sisa_antrian").innerHTML = data;
+        
+        if(data==0){
+          var number = "<div style='color:red'>Habis</div>";
+        }else{
+          var number = pad(data, 3);
+        }
+        document.getElementById("sisa_antrian").innerHTML = number;
     });
 
     //Start realtime clock
