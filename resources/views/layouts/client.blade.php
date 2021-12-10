@@ -16,6 +16,15 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
+<style type="text/css">
+    body {
+        height: 100%;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-image: linear-gradient(#06058d, #312eff, #06058d);
+    }
+</style>
 <body>
         <main>
             @yield('content')

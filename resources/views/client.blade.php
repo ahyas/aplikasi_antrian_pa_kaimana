@@ -14,28 +14,28 @@
 }
 </style>
 <body onload="startTime()">
-<div class="container-fluid vh-100" style="background-color:#1aeb39">
+<div class="container-fluid vh-100">
     <div class="row" style="height:10%">  
-      <div class="col-sm-9"  style="background-color:orange;"><h3 style="font-weight:bold; padding-top:10px">MAHKAMAH AGUNG REPUBLIK INDONESIA</h3><h4 style="font-weight:bold;">PENGADILAN AGAMA KAIMANA</h4></div>
-      <div class="col-sm-3" style="background-color:orange;"><div id="clock" style="font-size:50px; font-weight:bold; line-height:25px; padding-top:20px;"></div><br><div id="date" style="font-size:20px; line-height:0;"><b><i>{{date('l, F jS, Y')}}</i></b></div></div>
+      <div class="col-sm-9"  style="color:white"><h2 style="font-weight:bold; padding-top:10px">MAHKAMAH AGUNG REPUBLIK INDONESIA</h2><h4 style="font-weight:bold;">PENGADILAN AGAMA KAIMANA</h4></div>
+      <div class="col-sm-3" style="color:#12e034; text-align:right"><div id="clock" style="font-size:50px; font-weight:bold; line-height:25px; padding-top:20px;"></div><br><div id="date" style="font-size:20px; line-height:0; color:white"><b><i>{{date('l, F jS, Y')}}</i></b></div></div>
     </div>
     
     <div class="row" style="height:70%">  
-      <div class="col-sm-4" style="background-color:yellow; font-weight:bold; text-align:center;"><div style="font-size: 40px; background-color:#21db53; border-radius: 25px; margin-top:25px">RUANG SIDANG UTAMA</div><div style="font-size: 40px; padding-top:0px;">NOMOR ANTRIAN</div>
-      <div style="font-size:250px; font-weight:bold; color:red; background-color:white; border-radius: 25px;" id="antrian_saat_ini"></div></div>
-      <div class="col-sm-8" style="background-color:yellow; padding-top:20px; padding-left:30px">
+      <div class="col-sm-4" style=" font-weight:bold; text-align:center;"><div style="background-color:orange; font-size: 40px; border-radius: 25px; margin-top:25px">RUANG SIDANG UTAMA</div><div style="font-size: 40px; padding-top:25px; color:yellow">NOMOR ANTRIAN</div>
+      <div style="font-size:250px; font-weight:bold; color:red; background-color:white; border-radius: 25px; border:25px solid black" id="antrian_saat_ini"></div></div>
+      <div class="col-sm-8" style=" padding-top:20px; padding-left:30px;">
         <video width="90%;" height="auto" style="border-radius: 20px;" autoplay loop muted>
           <source src="public/video/kaimana.mp4" type="video/mp4" />
         </video>
       </div>
     </div>
     <div class="row" style="height:10%">  
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Jumlah antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="total_antrian"></div></div>
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Antrian selanjutnya</b><br><div style="font-size:50px; font-weight:bold; text-align:center" id="antrian_selanjutnya"></div></div>
-      <div class="col-sm-4" style="background-color:#1aeb39; font-weight:bold; text-align:center; line-height:50px; font-size:30px"><b>Sisa antrian</b><br><div style="font-size:50px; font-weight:bold; text-align:center;" id="sisa_antrian"></div></div>
+      <div class="col-sm-4" style="font-weight:bold; text-align:center; line-height:50px; font-size:30px; color:yellow; border-radius:15px;"><b>Jumlah antrian</b><br><div style="font-size:70px; font-weight:bold; text-align:center; color:white;" id="total_antrian"></div></div>
+      <div class="col-sm-4" style="font-weight:bold; text-align:center; line-height:50px; font-size:30px; color:yellow"><b>Antrian selanjutnya</b><br><div style="font-size:70px; font-weight:bold; text-align:center" id="antrian_selanjutnya"></div></div>
+      <div class="col-sm-4" style="font-weight:bold; text-align:center; line-height:50px; font-size:30px; color:yellow"><b>Sisa antrian</b><br><div style="font-size:70px; font-weight:bold; text-align:center;" id="sisa_antrian" ></div></div>
     </div>
     <div class="row" style="height:10%">
-      <div class="footer"><div class="col-sm-12" style="font-size:30px; background-color:cyan;"><marquee direction="left" style="font-size:25px"><b><i>SELAMAT DATANG DI KANTOR PENGADILAN AGAMA KAIMANA - SENYUM, SALAM, SAPA, SOPAN, SANTUN</i></b></marquee></div></div>
+      <div class="footer"><div class="col-sm-12" style="font-size:30px; background-color:#00003d;"><marquee direction="left" style="font-size:25px; color:yellow"><b><i>SELAMAT DATANG DI KANTOR PENGADILAN AGAMA KAIMANA - SENYUM, SALAM, SAPA, SOPAN, SANTUN</i></b></marquee></div></div>
     </div>
 </div>
 </body>
