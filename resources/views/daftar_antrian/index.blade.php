@@ -13,12 +13,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                <!--tanggal format bahasa indonesia-->
+                <?php include("public/plugins/tgl_indo.php"); ?>
                 <!--Jika login sebagai Admin 1-->
                 @if(Auth::user()->id_role==1)
                 <!-- Start Tabel untuk menampilkan daftar antrian sidang-->
                 <div class="card-header">Daftar antrian sidang</div>
                 <div class="card-body">
-                    <p>Berikut ini adalah daftar perkara yang akan di sidangkan pada hari ini, Tanggal <?php echo date("Y-m-d"); ?> </p>
+                    <p>Berikut ini adalah daftar perkara yang akan di sidangkan pada hari ini, Tanggal <b><?php
+                    $hariBahasaInggris = date('l'); $hariBahasaIndonesia = hariIndo($hariBahasaInggris); echo $hariBahasaIndonesia.", ".tgl_indo(date('Y-m-d')); ?></b></p>
                     <button class="btn btn-success btn-sm btnInput" id="btnInput">Input antrian</button>
                     <br><br>
                     <table class="table table-striped daftar_antrian" width="100%">
@@ -49,11 +52,11 @@
                                 <table class="table table-striped daftar_perkara" width="100%">
                                     <thead>
                                     <tr>                   
-                                        <td>No. Perkara</td>
-                                        <td>Pihak 1</td>
-                                        <td>Pihak 2</td>
-                                        <td width="70px">Jenis</td>
-                                        <td>Action</th>
+                                        <th>No. Perkara</th>
+                                        <th>Pihak 1</th>
+                                        <th>Pihak 2</th>
+                                        <th width="70px">Jenis</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -71,13 +74,13 @@
                     <table class="table table-striped pemanggilan_antrian" width="100%">
                         <thead>
                         <tr> 
-                            <td width="60px">Antrian</td>                  
-                            <td>No. Perkara</td>
-                            <td>Pihak 1</td>
-                            <td>Pihak 2</td>
-                            <td width="70px">Jenis</td>
-                            <td width="70px">Status</td>
-                            <td>Action</th>
+                            <th width="60px">Antrian</th>                  
+                            <th>No. Perkara</th>
+                            <th>Pihak 1</th>
+                            <th>Pihak 2</th>
+                            <th width="70px">Jenis</th>
+                            <th width="70px">Status</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
