@@ -2,9 +2,9 @@
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 // deklarasi parameter koneksi database
-$host     = "114.125.184.194";              // server database, default “localhost” atau “127.0.0.1”
-$username = "u4441694_ahyas";                   // username database, default “root”
-$password = "ahyaswi91";                       // password database, default kosong
+$host     = "192.168.1.10";              // server database, default “localhost” atau “127.0.0.1”
+$username = "root";                   // username database, default “root”
+$password = "kaimanax123";                       // password database, default kosong
 $database = "u4441694_db_antri";             // memilih database yang akan digunakan
 
 // buat koneksi database

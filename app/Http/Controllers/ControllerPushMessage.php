@@ -9,7 +9,12 @@ class ControllerPushMessage extends Controller
 {
     public function server(Request $request){
         $no_perkara=$request["no_perkara"];
-        $table=DB::table("tb_antrian")->select("no_perkara")->where("no_perkara",$no_perkara)->first();
+        $table=DB::connection('remote_mysql')
+        ->table("u4441694_db_antri.tb_antrian")
+        ->select("u4441694_db_antri.tb_antrian.no_perkara")
+        ->where("u4441694_db_antri.tb_antrian.no_perkara",$no_perkara)
+        ->first();
+        
         $data=array(
             "no_perkara"=>$no_perkara,
              );
@@ -21,16 +26,17 @@ class ControllerPushMessage extends Controller
         date_default_timezone_set("Asia/Jayapura");
         $no_perkara=$request["no_perkara"];
         $date=date("Y-m-d H:i:s");
-        $table=DB::table("tb_antrian")
-        ->where("no_perkara",$request["no_perkara"])
+        $table=DB::connection('remote_mysql')->table("u4441694_db_antri.tb_antrian")
+        ->where("u4441694_db_antri.tb_antrian.no_perkara",$request["no_perkara"])
         ->update([
-            "called"=>1,
-            "updated_at"=>$date
+            "u4441694_db_antri.tb_antrian.called"=>1,
+            "u4441694_db_antri.tb_antrian.updated_at"=>$date
         ]);
 
-        $no_antrian=DB::table("tb_antrian")
-        ->where("no_perkara",$no_perkara)
-        ->select("no_antrian")->first();
+        $no_antrian=DB::connection('remote_mysql')->table("u4441694_db_antri.tb_antrian")
+        ->where("u4441694_db_antri.tb_antrian.no_perkara",$no_perkara)
+        ->select("u4441694_db_antri.tb_antrian.no_antrian")
+        ->first();
 
         return response()->json(["table"=>$table,"no_antrian"=>$no_antrian]);
     }

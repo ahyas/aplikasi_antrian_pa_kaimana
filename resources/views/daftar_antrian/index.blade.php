@@ -9,6 +9,7 @@
 
 </style>
 <?php date_default_timezone_set("Asia/Jayapura"); ?>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -18,7 +19,7 @@
                 <!--Jika login sebagai Admin 1-->
                 @if(Auth::user()->id_role==1)
                 <!-- Start Tabel untuk menampilkan daftar antrian sidang-->
-                <div class="card-header">Daftar antrian sidang</div>
+                <div class="card-header">Daftar antrian sidangs</div>
                 <div class="card-body">
                     <p>Berikut ini adalah daftar perkara yang akan di sidangkan pada hari ini, Tanggal <b><?php
                     $hariBahasaInggris = date('l'); $hariBahasaIndonesia = hariIndo($hariBahasaInggris); echo $hariBahasaIndonesia.", ".tgl_indo(date('Y-m-d')); ?></b></p>
@@ -45,7 +46,7 @@
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
                             <div class="modal-header bg-info text-white"  style="background-image: linear-gradient(#d0e2f8, #e2ecfb); height: 30px; line-height: 6px; font-size: 13px; border-top: 1px white solid">
-                                <p style="line-height: 0; color:#0a4293; font-weight:normal; font-size:14px; font-weight:600;">Daftar barang</p><button style="line-height: 0; background-color:red; border-radius:3px;" type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color:white">&times;</span></button>
+                                <p style="line-height: 0; color:#0a4293; font-weight:normal; font-size:14px; font-weight:600;">Daftar perkara</p><button style="line-height: 0; background-color:red; border-radius:3px;" type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color:white">&times;</span></button>
                             </div>
                             <div class="modal-body" style="background-color:white; border-left:6px solid #e2ecfb; border-right:6px solid #e2ecfb; border-bottom:6px solid #e2ecfb; font-size:13px">
                             <p>Masukan para pihak yang akan melakukan sidang hari ini</p>
@@ -69,7 +70,7 @@
             </div>
             <!--Jika login sebagai Admin 2-->
             @elseif(Auth::user()->id_role==2)
-            <div class="card-header">Pemanggilan para pihak sesuai nomor antrian</div>
+            <div class="card-header">Pemanggilan para pihak sesuai nomor antrians</div>
                 <div class="card-body">
                     <table class="table table-striped pemanggilan_antrian" width="100%">
                         <thead>
@@ -98,8 +99,8 @@
 <audio id="tingtung" src="public/audio/tingtung.mp3"></audio>
 @push('scripts')
 <!--Link cadangan kalau link local tidak berfungsi-->
-<!--<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>-->
-<script src="public/js/responsivevoice.js"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>
+<!--<script src="public/js/responsivevoice.js"></script>-->
 <script type="text/JavaScript">
     $(document).ready(function(){
         //Start Daftar perkara
@@ -219,7 +220,7 @@
                 type:"GET",
                 data:{no_perkara:no_perkara},
                 success:function(data){
-                    console.log(data.no_antrian.no_antrian);
+                    console.log(data);
                     var bell = document.getElementById('tingtung');
                     // mainkan suara bell antrian
                     bell.pause();
