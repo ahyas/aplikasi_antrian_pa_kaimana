@@ -13,40 +13,36 @@
 }
 </style>
 <div class="container-fluid">
-    <header>
+    
         <!-- Jumbotron -->
-        <div class="p-5 text-center bg-light">
-            <h1 class="mb-3">MAHKAMAH AGUNG REPUBLIK INDONESIA</h1>
-            <h2 class="mb-3">Pengadilan Agama Kaimana</h2>
+        <div class="p-5 text-center bg-light" style="height:100px;">
+            <h1 style="line-height:0px; text-align:left;">MAHKAMAH AGUNG REPUBLIK INDONESIA</h1>
+            <h2 style="line-height:50px; text-align:left">Pengadilan Agama Kaimana</h2>
         </div>
         <!-- Jumbotron -->
-    </header>
-  <div class="row" style="background-color:yellow; padding-bottom:200px">
-    <div class="col" style="text-align: center">
-        <div class="card" style="width: 100%;">
+    
+  <div class="row" style="padding-top:30px">
+    <div class="col" style="text-align: center;">
+        <div class="card text-white bg-dark mb-3" style="max-width: 100%; height:300px">
+            <div class="card-header"><h5 class="card-title">RUANG SIDANG UTAMA</h5></div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h5 class="card-title">Dark card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
             </div>
         </div>
     </div>
-    <div class="col-8" style="text-align: center">
-        <div class="card" style="width: 100%;">
+    <div class="col-8" style="text-align: center;">
+        <div class="card text-white bg-dark mb-3" style="max-width: 100%; height:500px">
+            <div class="card-header"><h5 class="card-title">RUANG SIDANG UTAMA</h5></div>
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <h5 class="card-title">Dark card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
     </div>
   </div>
 
-  <div class="row" style="background-color:yellow; margin-bottom:0">
+  <div class="row" style=" margin-bottom:0">
     <div class="col" style="text-align: center;">
         <div class="card text-white bg-dark mb-3" style="max-width: 100%">
             <div class="card-header"><h5 class="card-title">Jumlah Antrian</h5></div>
