@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -59,7 +60,11 @@ class LoginController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
-            return redirect()->route('home.index');
+            if(Auth::user()->id_role==1){
+                return redirect()->route("antrian.index");
+            }elseif(Auth::user()->id_role==2){
+                return redirect()->route("antrian.index");
+            }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');

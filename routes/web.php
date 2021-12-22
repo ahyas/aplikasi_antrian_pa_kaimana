@@ -26,10 +26,9 @@ Route::get('call','ControllerPushMessage@call');
 Route::get('get_antrian','ControllerPushMessage@get_antrian')->name('push.get_antrian');
 //End SSE Scripts
 
-//Start test SSE
-Route::get("test/client","ControllerPushTest@client");
-Route::get("test/server","ControllerPushTest@server");
-//End test SSE
+//Start test new client layout
+Route::get("test/display", "ControllerNewLayout@index");
+//End test new layout
 
 Route::group(['middleware' => 'auth'], function () {
     //Start manage antrian sidang 

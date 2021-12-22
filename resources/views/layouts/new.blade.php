@@ -16,10 +16,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     
-    
 </head>
 <body>
     <div id="app">
+    
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -75,6 +75,7 @@
             @yield('content')
         </main>
     </div>
+    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- DataTables -->
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>

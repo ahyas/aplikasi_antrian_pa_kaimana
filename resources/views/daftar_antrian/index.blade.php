@@ -5,6 +5,13 @@
     table tr td:last-child {
         white-space: nowrap;
         width: 1px;
+        text-align: right;
+    }
+
+    table thead tr th:last-child{
+        white-space: nowrap;
+        width: 1px;
+        text-align:right;
     }
 
 </style>
@@ -19,21 +26,21 @@
                 <!--Jika login sebagai Admin 1-->
                 @if(Auth::user()->id_role==1)
                 <!-- Start Tabel untuk menampilkan daftar antrian sidang-->
-                <div class="card-header">Daftar antrian sidangs</div>
+                <div class="card-header">Daftar antrian sidang</div>
                 <div class="card-body">
-                    <p>Berikut ini adalah daftar perkara yang akan di sidangkan pada hari ini, Tanggal <b><?php
+                    <p>Berikut ini adalah daftar perkara yang akan di sidangkan pada hari ini: <b><?php
                     $hariBahasaInggris = date('l'); $hariBahasaIndonesia = hariIndo($hariBahasaInggris); echo $hariBahasaIndonesia.", ".tgl_indo(date('Y-m-d')); ?></b></p>
                     <button class="btn btn-success btn-sm btnInput" id="btnInput">Input antrian</button>
                     <br><br>
                     <table class="table table-striped daftar_antrian" width="100%">
                         <thead>
                         <tr> 
-                            <td width="60px">Antrian</td>                  
-                            <td>No. Perkara</td>
-                            <td>Pihak 1</td>
-                            <td>Pihak 2</td>
-                            <td width="70px">Jenis</td>
-                            <td>Action</th>
+                            <th width="100px">No. Antrian</th>                  
+                            <th>No. Perkara</th>
+                            <th>Penggugat</th>
+                            <th>Tergugat</th>
+                            <th width="70px">Jenis</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
@@ -48,14 +55,14 @@
                             <div class="modal-header bg-info text-white"  style="background-image: linear-gradient(#d0e2f8, #e2ecfb); height: 30px; line-height: 6px; font-size: 13px; border-top: 1px white solid">
                                 <p style="line-height: 0; color:#0a4293; font-weight:normal; font-size:14px; font-weight:600;">Daftar perkara</p><button style="line-height: 0; background-color:red; border-radius:3px;" type="button" class="close" data-dismiss="modal"><span aria-hidden="true" style="color:white">&times;</span></button>
                             </div>
-                            <div class="modal-body" style="background-color:white; border-left:6px solid #e2ecfb; border-right:6px solid #e2ecfb; border-bottom:6px solid #e2ecfb; font-size:13px">
+                            <div class="modal-body" style="background-color:white; border-left:6px solid #e2ecfb; border-right:6px solid #e2ecfb; border-bottom:6px solid #e2ecfb;">
                             <p>Masukan para pihak yang akan melakukan sidang hari ini</p>
                                 <table class="table table-striped daftar_perkara" width="100%">
                                     <thead>
                                     <tr>                   
-                                        <th>No. Perkara</th>
-                                        <th>Pihak 1</th>
-                                        <th>Pihak 2</th>
+                                        <th width="100px">No. Perkara</th>
+                                        <th>Penggugat</th>
+                                        <th>Tergugat</th>
                                         <th width="70px">Jenis</th>
                                         <th>Action</th>
                                     </tr>
@@ -75,10 +82,10 @@
                     <table class="table table-striped pemanggilan_antrian" width="100%">
                         <thead>
                         <tr> 
-                            <th width="60px">Antrian</th>                  
+                            <th width="100px">No. Antrian</th>                  
                             <th>No. Perkara</th>
-                            <th>Pihak 1</th>
-                            <th>Pihak 2</th>
+                            <th>Penggugat</th>
+                            <th>Tergugat</th>
                             <th width="70px">Jenis</th>
                             <th width="70px">Status</th>
                             <th>Action</th>
@@ -158,9 +165,9 @@
                 {data:"called",
                     mRender: function(data){
                         if(data==0){
-                            return'<span class="badge badge-primary">Primary</span>';
+                            return'<span class="badge badge-primary">Sudah dipanggil</span>';
                         }else{
-                            return'<span class="badge badge-danger">Danger</span>';
+                            return'<span class="badge badge-danger">Belum dipanggil</span>';
                         }
                     }
                 },
@@ -207,6 +214,7 @@
                 data:{no_perkara:no_perkara},
                 success:function(data){
                     $(".daftar_antrian").DataTable().ajax.reload();
+                    $(".daftar_perkara").DataTable().ajax.reload();
                 }
             });
         });

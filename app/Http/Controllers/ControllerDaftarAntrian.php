@@ -71,7 +71,8 @@ class ControllerDaftarAntrian extends Controller
     }
 
     public function delete(Request $request){
-        $table=DB::table("u4441694_db_antri.tb_antrian")
+        $table=DB::connection('remote_mysql')
+        ->table("u4441694_db_antri.tb_antrian")
         ->where("u4441694_db_antri.tb_antrian.no_perkara",$request["no_perkara"])
         ->delete();
         return response()->json($table);
